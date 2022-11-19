@@ -24,6 +24,7 @@ import java.io.InputStream;
 import java.nio.channels.Channels;
 import java.nio.channels.FileChannel;
 import java.nio.channels.ReadableByteChannel;
+import java.nio.file.Files;
 import org.apache.ignite.internal.cli.config.ConfigManager;
 
 /**
@@ -70,7 +71,7 @@ public class TestConfigManagerHelper {
      */
     public static File copyResourceToTempFile(String resource) {
         try {
-            File tempFile = File.createTempFile("cli", null);
+            File tempFile = Files.createTempFile("cli", null).toFile();
 
             try (FileOutputStream fileOutputStream = new FileOutputStream(tempFile)) {
                 FileChannel dest = fileOutputStream.getChannel();

@@ -17,6 +17,7 @@
 package org.apache.ignite.raft.jraft.storage.io;
 
 import java.io.File;
+import java.nio.file.Files;
 import org.apache.ignite.raft.jraft.RaftMessagesFactory;
 import org.apache.ignite.raft.jraft.entity.LocalFileMetaOutter;
 import org.junit.jupiter.api.Test;
@@ -29,7 +30,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class MessageFileTest {
     @Test
     public void testSaveLoad() throws Exception {
-        File tempFile = File.createTempFile("test", "msgfile");
+        File tempFile = Files.createTempFile("test", "msgfile").toFile();
         String path = tempFile.getAbsolutePath();
         tempFile.delete();
         MessageFile file = new MessageFile(path);
